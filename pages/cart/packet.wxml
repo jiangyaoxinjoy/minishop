@@ -1,0 +1,19 @@
+<van-cell title="不使用红包" bind:click="onUsePacket">
+  <van-radio custom-class="radio_cc" catchtap="RonChange" name="use" value="{{packet_nonuse}}" icon-class="radio_l" />
+</van-cell>
+<view  wx:for="{{packet_list}}" wx:key="this" wx:for-index="idx">
+<!-- <van-card custom-class="van-card-root-c {{ item.goods_status == '10' && item.stock_num> 0 ? '' : 'error_goods'}}" thumb-link="../goods/index?goods_id={{item.goods_id}}" 
+      price="{{item.goods_price}}" 
+      title="{{item.goods_name}}" 
+      desc="{{item.goods_sku.goods_attr ? item.goods_sku.goods_attr :'默认规格'}}"  desc-class="vard-d-c"
+      centered="{{true}}" lazy-load="{{true}}" title-class="card-t-c" price-class="card-p-c" thumb="{{item.goods_sku.spec_image==''? item.image:item.goods_sku.spec_image}}"> -->
+  <van-card 
+    title="{{item.title}}"  
+    centered="{{true}}"
+    desc="{{item.desc}}"
+    custom-class="van-card-root-c addimportant {{ item.canUse? '' : 'error_goods'}}" 
+   >
+    <view slot="thumb" class='thumb'>￥<text class='price'>{{item.discount}}元</text> <text class='desc'>{{item.name}}</text></view>
+    <van-radio slot="radior"  custom-class="radio_cc" catchtap="RonChange" name="1" value="1" icon-class="radio_l" />
+  </van-card>    
+</view>

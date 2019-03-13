@@ -1,0 +1,45 @@
+<van-swipe-cell 
+  class="vscell" 
+  right-width="{{ 65 }}" 
+  left-width="{{ 65 }}"  
+  wx:for="{{adresslist}}" 
+  wx:key="this" 
+  wx:for-index="idx" 
+  data-id="{{idx}}" 
+  data-adressid="{{item.address_id}}"
+  data-defult="{{item.isdefault}}" 
+  bind:click="onclickItem"
+>
+  <view slot="left" class='vccb morenb'>默认</view>
+  <van-cell-group custom-class="cell_group"  border="{{ false }}" >
+     <van-cell 
+      custom-class="addcell {{item.isdefault=='1'? 'morenback' :''}}" 
+      title-class="title-class" 
+      border="{{ false }}" 
+    >
+      <view slot="title">
+        <text class="van-cell-text">
+          <text class='name'>{{item.name}} </text>
+          <text class='phone'>{{item.phone}}</text>
+        </text>
+        <van-tag wx:if="{{item.isdefault=='1'}}" mark custom-class='tagdef' type="danger">默认</van-tag>
+        <view class="ob-label">{{item.province}}{{item.city}}{{item.region}} {{item.detail}}</view>
+      </view>
+      <view catch:tap="onClick" class='edit' data-adressid="{{item.address_id}}">编辑</view>
+      </van-cell>
+  </van-cell-group>
+  <view slot="right" class='vccb delb'>删除</view>
+</van-swipe-cell>
+
+<view wx:if="{{isNodata}}" class="liteshop-notcont" style="margin-top:130px;">
+  <view class="img">
+    <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+  </view>
+  <text class="cont">未增加地址</text>
+</view>
+
+  <view class="footer-fixed">
+    <view bindtap="createAddress" class="order-bt" style="width:100%">添加新地址</view>
+  </view>
+
+  <van-toast id="van-toast" />

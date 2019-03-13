@@ -1,0 +1,18 @@
+<van-search
+  value="{{ re_value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onSearchchange"
+  bind:search="onSearch"
+  background ="#fff"
+  inputStyle="background:#f7f7f7;border-radius:30rpx;"
+  show-action="{{true}}"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+<view class='wrap'>
+  <navigator wx:for="{{category}}" wx:key="index" class='complist_nav' url='../category/list?cid={{item.id}}&name={{item.name}}'>
+    <image mode='widthFix' src="{{item.image}}"></image>
+  </navigator>
+</view>

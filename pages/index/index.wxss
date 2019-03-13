@@ -1,0 +1,324 @@
+/* banner轮播 */
+.slide-image {
+  background: #fff;
+}
+.diy-banner {
+  position: relative;
+  background-color:white;
+}
+/* banner组件按钮 */
+.swiper-box .wx-swiper-dot {
+  height: 20rpx;
+  width: 20rpx;
+}
+.swiper-box {
+  width: 750rpx;
+  height: 416.6rpx;
+  position: relative;
+}
+.swiper-box image {
+  width: 100%;
+  height: 100%;
+}
+.complist{
+  background-color: white;
+  margin-top:20rpx;
+}
+.til_conview {
+  width:100%;
+  position: relative;
+  text-align: center;
+}
+
+.in-title{
+  font-size:1em;
+  color:#ee8246;
+  width:10em;
+  display:block;
+  margin:0 auto;
+  line-height:2em;
+  padding:0.5em 0 0.4em 3em;
+  position: relative;
+}
+.in-title.o-in-title{
+  border: none;
+  display: inline-block;
+  width: auto;
+   padding:1em 0 0.7em 0;
+}
+.o-in-title::before,.o-in-title::after{
+  content: "";
+  border-top: 1px solid #E8E8E8;  
+  display: block;
+  position: absolute;
+  width: 8%;
+  top: 28px;   
+}
+.o-in-title::before{
+  left:32%;
+}
+.o-in-title::after{
+  right:30%
+}
+.more{
+  position: absolute;
+  right: 8px;
+  top: 18px;
+  color:#6d189e;
+}
+.van-icon-new{
+  height: 30px;
+}
+.til_con {
+  font-weight:bold;
+  font-size:1.1em;
+  margin-left:0.68em;
+  color: #ee8246;
+}
+.van-icon-new{
+  display: block!important;
+}
+
+.index_sale {
+  padding: 12px;
+}
+.index_sale .nav_img, .index-list .nav_img {
+  padding: 30rpx 0 0 0;
+  width: 100%;
+  height: 30rpx;
+}
+.index_sale scroll-view ,.coupon scroll-view{
+  width: 100%;
+  white-space: nowrap;
+}
+.index_sale .sale_img {
+  border: 1rpx solid #f2f2f2;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 159rpx;
+  height: 159rpx;
+}
+.index_sale .sale_img image {
+  width: 100%;
+  height: 100%;
+}
+.index_sale .price {
+  margin-top: 11rpx;
+  display: block;
+  color:#f83e05 !important;
+  text-align:center;
+}
+.index_sale .page-column {
+  padding: 0 11rpx 11rpx 0;
+}
+.index_sale .content {
+  width: 170rpx;
+  overflow:hidden;
+}
+.index_sale .content text {
+  font-size: 25rpx;
+  margin: 5rpx 10rpx;
+  width: 100%;
+}
+
+/* 瀑布流 */
+.free-WaterfallFlow{
+  width:100%;
+  /* column-count:3; */
+  /*column-count:2;column-count 属性规定元素应该被分隔的列数： */
+}
+.free-WaterfallFlow .flex-wrap{
+  box-sizing: border-box;
+  display: inline-block;
+  width:33.3%;
+  vertical-align:top;
+}
+.mar-10{
+  background: #fff;
+  width: 96%;
+  margin: auto;
+  border-radius: 10rpx;
+  margin-top: 10px;
+  overflow: hidden
+}
+.flex-wrap image{
+  margin:0 auto;
+  vertical-align:top;
+} 
+
+/* add */
+.complist_nav{
+  width: 100%;
+}
+.complist_nav image{
+  width:100%;
+  vertical-align:top;
+}
+/* add */
+.complist_sub .index_sale .page-column {
+  padding:0 0 11rpx 0;
+  position: relative;
+}
+.page-column .add-cart{
+  position: absolute;
+  bottom: 18rpx;
+  right: 10rpx;
+}
+.complist_sub .index_sale{
+  background-color: #fafafa;
+  padding: 0px;
+}
+.index_sale .content_raddom {
+  /* overflow:hidden;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical; */
+  font-size: 25rpx;
+  height: 60rpx;
+  line-height: 30rpx;
+  margin: 10px;
+  word-break: break-all;
+}
+.complist_sub .price{
+  padding:  0 10rpx;
+}
+.padding-b{
+  width:100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+}
+.padding-b image{
+ position: absolute;
+ top: 0;
+ right: 0;
+ width:100%;
+ height: 100%;
+}
+.row{
+  display: inline-block;
+  vertical-align: middle;
+}
+.wrapper {
+    display: flex;
+    border-radius: 8px;
+    color: #fff;
+    margin: 10rpx;
+    position: relative;
+}
+.err::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.sawtooth{
+  background:#ee8246;
+  position: relative;
+  padding: 0 26rpx;
+}
+.sawtooth:before, .sawtooth:after {
+    content: ' ';
+    width: 0;
+    height: 100%;
+    /* 绝对定位进行偏移 */
+    position: absolute;
+    top: 0;
+}
+
+.sawtooth:before {
+    /* 圆点型的border */
+    border-right: 6px dotted #f8f8f8;
+    /* 偏移一个半径，让圆点的一半覆盖div */
+    left: -3px;
+}
+
+.sawtooth:after {
+    /* 圆点型的border */
+    border-left: 6px dotted #f1e8e3;
+    /* 偏移一个半径，让圆点的一半覆盖div */
+    right: -3px;
+}
+.desc{
+  background-color: #f1e8e3;
+  color: #555555;
+  position: relative;
+  padding: 0 20rpx;
+  font-size: 0.9em;
+}
+.desc text{
+  display: block;
+}
+.coupon .name,.discount{
+  text-align: center;
+  line-height: 1.5;
+}
+.coupon .name{
+  font-size: 0.8em;
+}
+.left{
+  padding: 20rpx 0;
+}
+.discount text{
+  font-size: 1em;
+  font-weight: bolder;
+}
+.mod-text{
+  display: flex;
+  flex-flow: column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  height: 100%;
+}
+.coupon{
+  padding:5rpx 12px;
+}
+.coupon .content {
+    flex: 7;
+    padding: 10px 20rpx;
+    border-radius: 8px 0 0 8px;
+    background: #ff976a;
+}
+.coupon .tip {
+    flex: 3;
+    text-align: center;
+    padding: 10rpx;
+    border-radius:0 8px 8px 0;
+    /* box-shadow: 2px 2px 2px #ff976a; */
+    /* background: #ff976a; */
+    margin: auto;
+}
+.money {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
+.pay-line {
+    margin-top: 10rpx;
+    font-size: 16px;
+}
+.mod-text text{
+ display:block;
+}
+.money::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  margin: 10rpx 0;
+}
+.field-style{
+  background: #ccc!important;
+}
+.complist .morecoupon{
+  padding:5px 15px;
+}

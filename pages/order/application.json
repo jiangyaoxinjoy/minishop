@@ -1,0 +1,18 @@
+{
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "申请",
+  "usingComponents": {
+    "van-card": "/res/vant/card/index",
+    "van-swipe-cell": "/res/vant/swipe-cell/index",
+    "van-cell": "/res/vant/cell/index",
+    "van-cell-group": "/res/vant/cell-group/index",
+    "van-submit-bar": "/res/vant/submit-bar/index",
+    "van-tag": "/res/vant/tag/index",
+    "van-icon": "/res/vant/icon/index",
+    "van-toast": "/res/vant/toast/index",
+    "van-steps": "/res/vant/steps/index",
+    "van-button": "/res/vant/button/index",
+    "van-field": "/res/vant/field/index",
+    "van-stepper": "/res/vant/stepper/index"
+  }
+}

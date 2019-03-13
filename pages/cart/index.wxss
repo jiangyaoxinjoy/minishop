@@ -1,0 +1,169 @@
+.card-t-c{
+  font-size: 1.1em;
+  height:40px;
+}
+.card-p-c{
+  font-size: 1.1em;
+  color: #df4401;
+}
+.card-op-c{
+  font-size: 1.1em;
+  text-decoration:none!important;
+}
+.card-root-c{
+  border-top: 1px solid #f8f8f8;
+}
+.card-root-c .van-card-root-c{
+  background-color:white;
+  height:118px;
+  padding:5px 8px 5px 140px;
+}
+.card-root-c.error .van-card-root-c{
+  padding-left: 150px;
+}
+.liteshop-notcont {
+  margin:130rpx 100rpx;
+}
+.liteshop-notcont .img {
+  width:200px;
+  height:120px;
+  margin:0 auto;
+}
+.liteshop-notcont .img image {
+  width: 100%;
+  height: 100%;
+}
+.liteshop-notcont .cont {
+  display: block;
+  text-align: center;
+  font-size: 30rpx;
+  color: #9a9a9a;
+  margin-top: 10rpx;
+}
+.van-stepper__input--disabled {
+  /* color:#454545!important;
+  background-color:#efefef!important;
+  z-index:-9!important; */
+}
+.step_input{
+  color: #000;
+}
+.van-card__footer {
+  bottom:5px!important;
+  right:5px!important;
+}
+.delb{
+  height:100%;
+  width:65px;
+  text-align:center;
+  font-size:1.2em;
+  background-color:#5db431;
+  color:white;
+  font-weight:bold;
+
+  display: flex;
+    justify-content:center;
+    align-items:Center;
+}
+.p-bottom{
+  position: relative;
+  padding: 0 10px;
+}
+.p-bottom::after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8;
+  opacity: 0.1;
+  pointer-events:none;
+}
+.vard-d-c{
+  max-width:14em;
+  white-space:normal!important;
+  overflow:inherit!important;
+}
+.card-root-c .van-card__thumb {
+  top:10px;
+  left:35px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.card-root-c.error .van-card__thumb {
+  left: 45px;
+}
+.plus-class,.minus-class{
+  width: 25px !important;
+}
+
+/* add */
+.radio_cc ,.radio_c,.error-tag{
+ display:inline-block;
+ position: absolute;
+ left: 7px;
+ top: 50px;
+}
+.error-tag{
+  left: 6px;
+  
+}
+.radio_c{
+  top: 15px;
+}
+.hidden-cl{
+  color: #ccc!important;
+}
+.errorsty{
+  padding-top: 5px;
+  font-size: 1.15em;
+  position: absolute;
+  bottom: 15px;
+  color: #000;
+  /* position: absolute;
+  top: 15px;
+  left: 45px;
+  width: 98px;
+  height: 98px;
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 98px;
+  background: rgb(75, 74, 74);
+  opacity: 0.5;
+  border-radius: 50%;
+  color: #fff;
+  background: #000;
+  z-index: 2; */
+}
+.allCheck{
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  position: relative;
+}
+.error .card-p-c,.error .card-t-c,.error .van-card__desc{
+  color: #9f9f9f;
+}
+.van-card__content{
+  margin-top: 0.5em;
+}
+.p-bottom .van-checkbox__icon--checked{
+  border-color:#ff5601;
+  background-color:#ff5601;
+}
+.van-radio__icon--checked{
+  color: #ff5601!important;
+}
+.goods_group{
+  margin: 10px 0;
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.van-stepper__input.van-stepper__input--disabled{
+  background-color: #fff;
+}

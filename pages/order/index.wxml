@@ -1,0 +1,230 @@
+<van-tabs 
+  active="{{ active }}" 
+  custom-class="tab-margin" 
+  bind:change="onChangeTab"
+  color="#f85a11"
+  animated="{{true}}"
+  swipeable="{{true}}"
+>
+  <van-tab title="全部订单">
+    <van-transition name="fade" duration="1000">
+      <view
+        wx:for="{{orderList}}"
+        wx:key="this" 
+        wx:for-index="{{root.id}}"
+        wx:for-item="root"
+        class='card_wrap'
+      >
+        <van-cell
+          title="订单号：{{root.order_no}}"
+          custom-class="order-title"
+          value="{{root.show_order_text}}"
+          url="/pages/order/detail?id={{root.id}}"
+        >
+        </van-cell>
+        <view bindtap='goDetail' data-id="{{root.id}}">
+          <van-card 
+            wx:for="{{root.goods_list}}"
+            wx:key="{{item.goods_id}}"
+            custom-class="van-card-root-c" 
+            thumb-link="assets/img/default.png" 
+            price="{{item.goods_coupon_price}}"
+            num="{{item.total_num}}" 
+            title="{{item.goods_name}}" 
+            desc="{{item.goods_attr ? item.goods_attr :'默认规格'}}" 
+            desc-class="vard-d-c"
+            centered="{{false}}" 
+            lazy-load="{{true}}" 
+            thumb="{{item.images}}" 
+            custom-class="card_c"
+            title-class="van-multi-ellipsis--l2 card_title"
+            price-class="card_p_c"
+          />
+        </view>
+        <view slot="footer" class='card_f'>
+          <van-cell border="{{ false }}">
+            <view class='card_f_desc'>
+              <text>共{{root.total_num}}件商品</text>
+              <text>合计：{{root.pay_price}}</text>
+            </view>
+          </van-cell>
+          <view class='card_f_bw'>
+            <van-button round custom-class="card_f_b fisrt" wx:if="{{root.can_cancel}}">付款</van-button>
+            <van-button round custom-class="card_f_b" id="{{root.id}}" wx:if="{{root.can_cancel}}"  bind:click="cancel_order">取消订单</van-button>
+          </view>
+        </view>
+      </view>
+    </van-transition>
+    
+  </van-tab>
+  <van-tab title="待支付">
+    <van-transition name="fade" duration="1000">
+    <view
+      wx:for="{{orderList}}"
+      wx:key="this" 
+      wx:for-index="{{root.id}}"
+      wx:for-item="root"
+      wx:if="{{root.show_order_text === '待支付'}}"
+      class='card_wrap'
+    >
+      <van-cell
+        title="订单号：{{root.order_no}}"
+        custom-class="order-title"
+        value="{{root.show_order_text}}"
+        url="/pages/order/detail?id={{root.id}}"
+      >
+      </van-cell>
+      <view bindtap='goDetail' data-id="{{root.id}}">
+        <van-card 
+          wx:for="{{root.goods_list}}"
+          wx:key="{{item.goods_id}}"
+          custom-class="van-card-root-c" 
+          thumb-link="assets/img/default.png" 
+          price="{{item.goods_coupon_price}}"
+          num="{{item.total_num}}" 
+          title="{{item.goods_name}}" 
+          desc="{{item.goods_attr ? item.goods_attr :'默认规格'}}" 
+          desc-class="vard-d-c"
+          centered="{{false}}" 
+          lazy-load="{{true}}" 
+          thumb="{{item.images}}" 
+          custom-class="card_c"
+          title-class="van-multi-ellipsis--l2 card_title"
+          price-class="card_p_c"
+        />
+      </view>
+      <view slot="footer" class='card_f'>
+        <van-cell border="{{ false }}">
+          <view class='card_f_desc'>
+            <text>共{{root.total_num}}件商品</text>
+            <text>合计：{{root.pay_price}}</text>
+          </view>
+        </van-cell>
+        <view class='card_f_bw'>
+          <van-button round custom-class="card_f_b fisrt" wx:if="{{root.can_cancel}}">付款</van-button>
+          <van-button round custom-class="card_f_b" wx:if="{{root.can_cancel}}" id="{{root.id}}"  bind:click="cancel_order">取消订单</van-button>
+        </view>
+      </view>
+    </view>
+    </van-transition>
+  </van-tab>
+
+  <van-tab title="待发货">
+    <van-transition name="fade" duration="1000">
+    <view
+      wx:for="{{orderList}}"
+      wx:key="this" 
+      wx:for-index="{{root.id}}"
+      wx:for-item="root"
+      wx:if="{{root.show_order_text === '待发货'}}"
+      class='card_wrap'
+    >
+      <van-cell
+        title="订单号：{{root.order_no}}"
+        custom-class="order-title"
+        value="{{root.show_order_text}}"
+        url="/pages/order/detail?id={{root.id}}"
+      >
+      </van-cell>
+      <view bindtap='goDetail' data-id="{{root.id}}">
+        <van-card 
+          wx:for="{{root.goods_list}}"
+          wx:key="{{item.goods_id}}"
+          custom-class="van-card-root-c" 
+          thumb-link="assets/img/default.png" 
+          price="{{item.goods_coupon_price}}"
+          num="{{item.total_num}}" 
+          title="{{item.goods_name}}" 
+          desc="{{item.goods_attr ? item.goods_attr :'默认规格'}}" 
+          desc-class="vard-d-c"
+          centered="{{false}}" 
+          lazy-load="{{true}}" 
+          thumb="{{item.images}}" 
+          custom-class="card_c"
+          title-class="van-multi-ellipsis--l2 card_title"
+          price-class="card_p_c"
+        />
+      </view>
+      <view slot="footer" class='card_f'>
+        <van-cell border="{{ false }}">
+          <view class='card_f_desc'>
+            <text>共{{root.total_num}}件商品</text>
+            <text>合计：{{root.pay_price}}</text>
+          </view>
+        </van-cell>
+        <view class='card_f_bw'>
+       
+        </view>
+      </view>
+    </view>
+    </van-transition>
+  </van-tab>
+
+  <van-tab title="待收货">
+    <van-transition name="fade" duration="1000">
+    <view
+      wx:for="{{orderList}}"
+      wx:key="this" 
+      wx:for-index="{{root.id}}"
+      wx:for-item="root"
+      wx:if="{{root.show_order_text === '待收货'}}"
+      class='card_wrap'
+    >
+      <van-cell
+        title="订单号：{{root.order_no}}"
+        custom-class="order-title"
+        value="{{root.show_order_text}}"
+        url="/pages/order/detail?id={{root.id}}"
+      >
+      </van-cell>
+      <view bindtap='goDetail' data-id="{{root.id}}">
+        <van-card 
+          wx:for="{{root.goods_list}}"
+          wx:key="{{item.goods_id}}"
+          custom-class="van-card-root-c" 
+          thumb-link="assets/img/default.png" 
+          price="{{item.goods_coupon_price}}"
+          num="{{item.total_num}}" 
+          title="{{item.goods_name}}" 
+          desc="{{item.goods_attr ? item.goods_attr :'默认规格'}}" 
+          desc-class="vard-d-c"
+          centered="{{false}}" 
+          lazy-load="{{true}}" 
+          thumb="{{item.images}}" 
+          custom-class="card_c"
+          title-class="van-multi-ellipsis--l2 card_title"
+          price-class="card_p_c"
+        />
+      </view>
+      <view slot="footer" class='card_f'>
+        <van-cell border="{{ false }}">
+          <view class='card_f_desc'>
+            <text>共{{root.total_num}}件商品</text>
+            <text>合计：{{root.pay_price}}</text>
+          </view>
+        </van-cell>
+        <view class='card_f_bw'>
+      
+        </view>
+      </view>
+    </view>
+    </van-transition>
+  </van-tab> 
+</van-tabs>
+
+<view wx:if="{{isNoData}}" class="liteshop-notcont" style="margin-top:130px;">
+    <view class="img">
+      <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+    </view>
+    <text class="cont">订单空空如也</text>
+</view>
+<van-dialog  
+  show="{{ cancel_dialog_show }}"
+  showConfirmButton="{{true}}"
+  showCancelButton="{{true}}"
+  title="删除订单"
+  message='确认要删除此订单吗？'
+  bind:confirm='confirm_delete'
+  bind:cancel='cancel_delete'
+/>
+<van-toast id="van-toast" />

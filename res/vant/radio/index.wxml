@@ -1,0 +1,17 @@
+<view class="van-radio custom-class {{ value === name ? 'checked' : 'uncheck' }} van-radio--{{goods}}">
+  <view class="van-radio__input">
+    <radio-group bindchange="onChange">
+    <!-- value === name value是在radio-group中设置的 name从页面传过来 -->
+      <radio
+        value="{{ name }}"
+        checked="{{ value === name }}"
+        disabled="{{ disabled }}"
+        class="van-radio__control"
+      />
+    </radio-group>
+    <van-icon class="{{ iconClass }}" custom-class="icon-class" name="{{ value === name ? 'checked' : 'check' }}" />
+  </view>
+  <view class="van-radio__label van-radio__label--{{ labelPosition }} label-class" bindtap="onClickLabel">
+    <slot />
+  </view>
+</view>

@@ -1,0 +1,12 @@
+{
+  "enablePullDownRefresh": false,
+  "usingComponents":{
+    "van-tabbar": "/res/vant/tabbar/index",
+    "van-tabbar-item": "/res/vant/tabbar-item/index",
+    "van-icon": "/res/vant/icon/index",
+    "van-card": "/res/vant/card/index",
+    "van-row": "/res/vant/row/index",
+    "van-col": "/res/vant/col/index",
+    "van-transition": "/res/vant/transition/index"
+  }
+}

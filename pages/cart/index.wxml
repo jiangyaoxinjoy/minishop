@@ -1,0 +1,117 @@
+<scroll-view
+  scroll-y
+  style="height: {{haveDataH}}px;"
+>
+  <view class='p-bottom'>
+    <van-checkbox-group 
+      value="{{ result }}" 
+      bind:change="onChange"
+      custom-class="goods_group"
+    >
+      <view class="card-root-c"  wx:for="{{goods_list}}" wx:key="{{item.cart_id}}" wx:for-index="idx">
+        <van-swipe-cell 
+          right-width="{{ 65 }}" 
+          data-id="{{item.goods_id}}" 
+          data-goods_sku_id="{{item.spec_sku_id}}" 
+          class="vscell" 
+          bind:click="delGoods" 
+          data-cart_id="{{item.cart_id}}" 
+          data-idx="{{idx}}"
+        >
+          <van-card 
+            custom-class="van-card-root-c" 
+            thumb-link="../goods/index?goods_id={{item.goods_id}}" 
+            price="{{item.goods_price}}" 
+            title="{{item.goods_name}}" 
+            desc="{{item.goods_sku.goods_attr ? item.goods_sku.goods_attr :'默认规格'}}"  
+            desc-class="vard-d-c"
+            centered="{{false}}" 
+            lazy-load="{{true}}" 
+            title-class="card-t-c" 
+            price-class="card-p-c" 
+            thumb="{{item.goods_sku.spec_image==''? item.image:item.goods_sku.spec_image}}"  
+          > 
+            <van-checkbox
+              slot="radio"
+              name="{{ item.cart_id }}"
+              custom-class="radio_cc" 
+              data-id="{{idx}}"
+              icon-class="{{item.checked ? 'radio_l' :''}}"
+            />
+            <view slot="footer">
+              <!-- disable-input -->
+                <!-- bind:plus="onplus" 
+                bind:minus="onsub" -->
+              <van-stepper  
+                data-id="{{idx}}" 
+                data-stock_num="{{item.stock_num}}"
+                custom-class="van-stepper-c" 
+                value="{{item.total_num}}" 
+                integer 
+                min="1" 
+                max="{{item.stock_num}}" 
+                plus-class="plus-class" 
+                minus-class="minus-class" 
+                input-class="step_input"
+                bind:change="change_input"
+              />
+            </view>
+          </van-card>
+          <view slot="right" class='delb'><span>删除</span></view>
+        </van-swipe-cell>
+      </view>
+    </van-checkbox-group>
+    <view class="card-root-c error" wx:for="{{error_goods_list}}" wx:key="{{item.cart_id}}" wx:for-index="idx">
+      <van-swipe-cell 
+        right-width="{{ 65 }}" 
+        data-id="{{item.goods_id}}" 
+        data-goods_sku_id="{{item.spec_sku_id}}" 
+        class="vscell" 
+        bind:click="delErrorgoods" 
+        data-cart_id="{{item.cart_id}}" 
+        data-idx="{{idx}}"
+      >
+        <van-card 
+          custom-class="van-card-root-c" 
+          thumb-link="../goods/index?goods_id={{item.goods_id}}" 
+          price="{{item.goods_price}}" 
+          title="{{item.goods_name}}" 
+          desc="{{item.goods_sku.goods_attr ? item.goods_sku.goods_attr :'默认规格'}}"  desc-class="vard-d-c"
+          centered="{{false}}" 
+          lazy-load="{{true}}" 
+          title-class="card-t-c" 
+          price-class="card-p-c" 
+          thumb="{{item.goods_sku.spec_image==''? item.image:item.goods_sku.spec_image}}" 
+        > 
+          <van-tag slot="radio" custom-class='error-tag' round color="#eaeaea">失效</van-tag>
+          <view slot="tags">
+            <view wx-if="{{item.goods_status != '10'}}" class='errorsty'>此商品已下架</view>
+            <view wx-if="{{item.stock_num <= 0 && item.goods_status == '10'}}" class='errorsty'>此商品已售完</view>
+          </view>
+        </van-card>
+        <view slot="right" class='delb'><span>删除</span></view>
+      </van-swipe-cell>
+    </view>
+  </view>
+  
+</scroll-view>
+
+<view wx:if="{{isNodata}}" class="liteshop-notcont" style="margin-top:130px;">
+  <view class="img">
+    <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+  </view>
+  <text class="cont">购物车还是空的，去首页看看</text>
+</view>
+
+<!-- 结算页 -->
+<van-submit-bar
+  price="{{order_total_price*100}}"
+  button-text="开始结算"
+  bind:submit="onSubmit" 
+  disabled="{{result.length == 0 ? true : false}}"
+  loading="{{gocheckout}}"
+  button-class="submit"
+>
+  <van-radio slot="top" custom-class="radio_c" catchtap="allCheckChange" name="{{true}}" value="{{allCheckValue}}" icon-class="{{allCheckValue ? 'radio_l' :''}}">全选</van-radio>
+</van-submit-bar>
+<van-toast id="van-toast" />

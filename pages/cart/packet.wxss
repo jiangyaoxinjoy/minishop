@@ -1,0 +1,26 @@
+.radio_cc{
+  position: absolute;
+  right: 0;
+}
+.thumb{
+  color: red;
+   font-size: 1em;
+  font-weight: 900;
+  padding-top: 20px;
+  
+}
+.thumb .price{
+  font-size: 2em;
+  font-weight: 900;
+}
+.thumb .desc{
+  color: #686868;
+  font-weight: normal;
+  display: block;
+}
+.van-card-root-c.addimportant{
+  background: #fff;
+}
+.radio_l{
+  color: #5db431;
+}

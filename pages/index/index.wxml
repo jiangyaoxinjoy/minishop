@@ -1,0 +1,129 @@
+<!-- 搜索框 -->
+<van-search
+  value="{{ re_value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onSearchchange"
+  bind:search="onSearch"
+  background ="#fff"
+  inputStyle="background:#f7f7f7;border-radius:30rpx;"
+  show-action="{{true}}"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+ <!-- 顶部通知栏目 -->
+<block wx:if="{{index_notice != ''}}">
+  <van-notice-bar
+    mode="closeable" color="#fff" backgroundColor="#ee8246"
+    text="{{index_notice}}"/>
+</block>
+
+<!-- banner轮播 -->
+<view class="diy-banner">
+  <swiper 
+    autoplay="{{autoplay}}" 
+    class="banner-box swiper-box dot-round" 
+    duration="{{duration}}" 
+    circular="{{true}}" 
+    indicator-dots="{{indicatorDots}}" 
+    interval="{{interval}}" 
+  >
+  <navigator hover-class="none" wx:for-item="banner" url="../news/index?id={{banner.id}}" wx:for="{{banner}}" wx:key="this">
+      <swiper-item item-id="{{index}}">
+        <image class="slide-image" mode="aspectFill" src="{{banner.image}}" data-id="{{index}}"></image>
+      </swiper-item>
+    </navigator>
+  </swiper>
+</view>
+
+<!-- 优惠券 -->
+<view class='complist'>
+  <van-cell  custom-class="morecoupon" title="专享优惠券" value="更多" titleStyle="color:#f45a8d" isLink url="../coupon/getcoupon">
+  <view slot="icon">
+      <van-icon name="coupon" color="#f45a8d" size="1.8em" custom-style="margin-right:0.3em;"/>
+    </view>
+  </van-cell>
+  <view class='coupon'>
+   <scroll-view scroll-x="true">
+   <view class='row' wx:for="{{coupon}}" wx:for-item="cou" wx:key="{{cou.id}}" bindtap='getCoupon' data-id="{{cou.id}}" data-item="{{index}}">
+    <view class='wrapper'>
+        <view wx:if="{{cou.ifget}}" class='err'></view>
+        <view class='sawtooth'>
+          <view class='left'>
+            <view class='discount'>
+            ￥<text >{{cou.discount}}</text>
+          </view>
+          <view class='name'>{{cou.name}}</view>
+          </view>
+        </view>
+        <view class='desc'>
+          <view class="mod-text">
+              <text wx:for="{{cou.coupontext}}" wx:key="index">{{item}}</text>
+            </view>
+        </view>
+      </view>
+    </view>
+   </scroll-view>
+  </view>
+</view>
+
+<!-- 最新上架 -->
+<view class='complist'>
+  <view class="til_conview van-hairline--bottom">
+    <van-row class='in-title'>
+      <van-col><van-icon name="new" color="#ee8246" size="2em" custom-class="van-icon-new"/></van-col>
+      <van-col><text class="til_con"> 最新上架 </text></van-col>
+    </van-row>
+    
+  </view>
+  <!-- 最新上架列表 S -->
+     <view class="index_sale ">
+      <scroll-view scroll-x="true">
+        <navigator hover-class="none" style="display: inline-block;" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{newlist}}" wx:key="this">
+          <view class="page-column">
+            <view class="sale_img">
+              <image mode="aspectFill" src="{{item.ImageFrist}}"></image>
+            </view>
+            <view class="content onelist-hidden">
+              <text>{{item.goods_name}}</text>
+            </view>
+            <text class="price">￥{{item.spec[0].goods_price}}</text>
+          </view>
+        </navigator>
+      </scroll-view>
+    </view>
+  <!-- 最新上架列表 E -->
+</view>
+
+<!-- 分类推荐 -->
+<view class='complist complist_sub' wx:for="{{randomlist}}" wx:for-item="list" wx:key='{{list.category_id}}' >
+  <navigator class='complist_nav' url='../category/list?cid={{list.category_id}}&name={{list.category_name}}'>
+    <image mode='widthFix' src="{{list.category_image}}"></image>
+  </navigator>
+
+  <!-- 分类推荐列表 S -->
+     <view class="index_sale ">
+      <view class="free-WaterfallFlow">
+        <block>
+          <view class="flex-wrap" wx:for="{{list.details}}" wx:key='{{item.goods_id}}' wx:for-index="idx">
+            <view class='mar-10'>
+              <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
+                <view class="page-column">
+                  <view class='padding-b'>
+                    <image mode="scaleToFill" src="{{item.ImageFrist}}"></image>
+                  </view>
+                  <view class="content_raddom van-multi-ellipsis--l2">
+                    {{item.goods_name}}
+                  </view>
+                  <text class="price">￥{{item.spec[0].goods_price}}</text>                
+                </view>
+              </navigator>
+            </view>
+          </view>
+        </block>
+      </view>
+     
+    </view> 
+  <!-- 分类推荐列表 E -->
+</view>
+ <include src="../foot_right.wxml"/>

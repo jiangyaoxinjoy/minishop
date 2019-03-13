@@ -1,0 +1,131 @@
+.van-tabbar-item--active {
+  color:#eb554d!important;
+  font-weight:bolder;
+}
+.card-t-c{
+  font-size: 1.4em;
+}
+.card-p-c{
+  font-size: 1.3em;
+  color: red;
+  font-weight: bolder;
+}
+.card-op-c{
+  font-size: 1.1em;
+  text-decoration:none!important;
+  margin-top:0.28em;
+}
+.card-root-c{
+  padding-top: 10px;
+  /*border:1px solid #ecd1fc;*/
+}
+.van-card-root-c{
+  box-shadow: 0 1px 2px #dfb3f8;
+  background-color:white!important;
+}
+.no-more{
+  margin:1em auto;
+  text-align:center;
+  color: #6d189e;
+}
+.liteshop-notcont {
+  margin:130rpx 100rpx;
+}
+.liteshop-notcont .img {
+  width:200px;
+  height:120px;
+  margin:0 auto;
+}
+.liteshop-notcont .img image {
+  width: 100%;
+  height: 100%;
+}
+.liteshop-notcont .cont {
+  display: block;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ee8246;
+  margin-top: 10rpx;
+}
+
+/* add */
+.price-icon{
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: All 0.4s ease-in-out;
+}
+.price-icon.xz180{
+  transform: rotate(270deg);
+}
+.free-WaterfallFlow {
+ width:100%;
+}
+.flex-wrap {
+  box-sizing:border-box;
+  display:inline-block;
+  width:50%;
+  vertical-align:top;
+  /* background:#fff; */
+  /* border: 20rpx solid #fafafa;
+  border-bottom:none; */
+  
+}
+.mar-20{
+  background:#fff;
+  margin: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.even .mar-20{
+  margin-left: 10rpx;
+}
+.odd .mar-20{
+  margin-right: 10rpx;
+}
+.complist_sub .index_sale .page-column {
+  padding:0 0 11rpx 0;
+  position:relative;
+}
+.padding-b {
+  width:100%;
+  height:0;
+  padding-bottom:100%;
+  position:relative;
+}
+.list-image{
+  position:absolute;
+  top:0;
+  right:0;
+  width:100%;
+  height:100%;
+  margin:0 auto;
+  vertical-align:top;
+}
+.goods-name {
+  font-size:26rpx;
+  text-overflow:-o-ellipsis-lastline;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  line-clamp:2;
+  -webkit-box-orient:vertical;
+  height:76rpx;
+  line-height:38rpx;
+  padding:16rpx;
+}
+.price{
+  color: #ea4c56;
+  font-size: 1.1em;
+}
+.price-sign{
+  font-size: 0.85em;
+}
+.sales{
+  float: right;
+  color: #999999;
+  font-size: 0.85em;
+}
+.goods-msg{
+  padding:16rpx;
+}

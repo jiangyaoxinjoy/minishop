@@ -1,0 +1,17 @@
+.app .header_card{
+  background: #fff;
+}
+.app .content_group{
+  margin-top: 10px;
+}
+.ico-ad{
+  width: 30px;
+  vertical-align: middle;
+}
+.desc{
+  margin-left: 30px;
+  color: #a0a0a0;
+}
+.content_group_cell{
+  align-items: center;
+}

@@ -1,0 +1,80 @@
+.wrapper {
+    width: 88%;
+    display: flex;
+    border-radius: 8px;
+    color: #fff;
+    margin: auto;
+    margin-top: 10px;
+    position: relative;
+}
+.err::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.sawtooth{
+  background:#ee8246; 
+  position: relative;
+  padding: 0 16px;
+}
+.sawtooth:before, .sawtooth:after {
+    content: ' ';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.sawtooth:before {
+    border-right: 6px dotted #f8f8f8;
+    left: -3px;
+}
+.sawtooth:after {
+    border-left: 6px dotted #f1e8e3;
+    right: -3px;
+}
+.desc{
+  background-color: #f1e8e3;
+  flex: 1;
+  color: #555555;
+  position: relative;
+}
+.desc text{
+  display: block;
+}
+.name,.discount{
+  text-align: center;
+  line-height: 1.5;
+}
+.left{
+  padding: 20px 0;
+}
+.discount text{
+  font-size: 2em;
+  font-weight: bolder;
+}
+.right{
+  line-height: 1.8;
+  position: absolute;
+  left: 16rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.liteshop-notcont {
+  margin:130rpx 100rpx;
+}
+.liteshop-notcont .img {
+  width:200px;
+  height:120px;
+  margin:0 auto;
+}
+.liteshop-notcont .img image {
+  width: 100%;
+  height: 100%;
+}

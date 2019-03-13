@@ -1,0 +1,59 @@
+<!-- <van-steps steps="{{ steps }}" active="{{ active }}" active-color="" custom-class="vsp-c"/> -->
+
+<van-cell
+ border="{{false}}"  
+ custom-class="vsp-c"
+ title="订单状态："
+ value="{{detail.show_order_text}}"
+>
+  <!-- <view slot="title">
+    <text>{{steps[active].text}}</text>
+    <text>{{steps[active].desc}}</text>
+  </view> -->
+</van-cell >
+
+<view class="p-bottom">
+  <view class='card_wrap'>
+    <view 
+      class="card-root-c" 
+      wx:for="{{detail.goods_list}}" 
+      wx:key="this" 
+      wx:for-index="idx">
+      <van-card
+        title="{{item.goods_name}}"
+        thumb="{{item.images}}"
+        custom-class="header_card"
+        num="{{item.total_num}}"
+        price="{{item.goods_price}}"
+        data-id="{{item.id}}"
+        lazy-load="{{true}}"
+        desc="{{item.goods_attr ? item.goods_attr :'默认规格'}}" 
+        title-class="van-multi-ellipsis--l2 card_title"
+      />
+      <view class='card_f' >
+        <van-button round wx:if="{{detail.can_exp}}" catchtap='goaftersale' data-id="{{item.id}}">申请售后</van-button>
+      </view>
+    </view>
+    <van-cell border="{{false}}" title="运费" value="￥{{freight}}" />
+    <van-cell border="{{false}}" title="现金券优惠" wx:if="{{detail.coupon_cash_discount != 0}}" value="-￥{{detail.coupon_cash_discount}}" />
+    <van-cell border="{{false}}" title="满减优惠" wx:if="{{detail.coupon_condition_discount != 0}}" value="-￥{{detail.coupon_condition_discount}}" />
+    <van-cell value-class="price" border="{{false}}" title="实付款" value="￥{{detail.pay_price}}" />
+  </view>
+
+  <view class='order_detail'>
+    <van-cell border="{{false}}">
+      <view slot="title" class='order_d_t'>订单信息</view>
+    </van-cell>
+    <van-cell border="{{false}}">
+      <view slot="title" >订单编号： <text>{{detail.order_no}}</text></view>
+      <view bindtap='copyText' data-text="{{detail.order_no}}" class='copy'>复制</view>
+    </van-cell>
+    <van-cell border="{{false}}">
+      <view slot="title" >订单创建时间： <text>{{detail.createtime}}</text></view>
+    </van-cell>
+  </view>
+</view>
+<view class="footer-fixed" wx:if="{{detail.can_cancel === 1}}">
+  <van-button size="normal" round>付款</van-button>
+  <van-button size="normal" round>取消订单</van-button> 
+</view>

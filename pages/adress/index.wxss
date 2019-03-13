@@ -1,0 +1,90 @@
+.vccb{
+  height:100%;
+  width:65px;
+  text-align:center;
+  font-size:1.2em;
+  color:white;
+  font-weight:bold;
+  display: flex;
+  justify-content:center;
+  align-items:Center;
+}
+.delb{
+  background-color:#ee8246;
+}
+.morenb{
+  background-color:red;
+}
+.addcell{
+  align-items: center;
+}
+.cell_group{
+  padding-bottom: 5px;
+  background: #fff;
+}
+.tagdef{
+  margin-left:6px;
+  top:-2px;
+  position:relative;
+}
+.ob-label,.name{
+  font-size:14px;
+  line-height:1.4;
+  color:#343434;
+}
+.name{
+  font-size: 16px;
+  margin-right: 5px;
+}
+.phone{
+  color: #9a9a9a;
+  font-size: 14px;
+}
+.footer-fixed {
+  position: fixed;
+  display: flex;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 46px;
+  z-index: 18;
+  box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
+  background: #fff;
+}
+.order-bt {
+  width: 50%;
+  background-color: #ee8246;
+  color: #fff;
+  text-align: center;
+  line-height: 46px;
+}
+
+.liteshop-notcont {
+  margin:130rpx 100rpx;
+}
+.liteshop-notcont .img {
+  width:200px;
+  height:120px;
+  margin:0 auto;
+}
+.liteshop-notcont .img image {
+  width: 100%;
+  height: 100%;
+}
+.liteshop-notcont .cont {
+  display: block;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ee8246;
+  margin-top: 10rpx;
+}
+.edit{
+  border-left: 1px solid #f5f5f5;
+}
+.vscell .van-cell__value{
+  -webkit-flex:none;
+  flex:none;
+}
+.edit{
+ padding-left: 10px;
+}

@@ -1,0 +1,153 @@
+<view class="app">
+  <van-cell custom-class="type" border="{{false}}" title="售后类型" value="{{detail.type_text}}" /> 
+
+  <block wx:if="{{detail.mark != ''}}">
+    <van-cell border="{{false}}"> 
+      <view slot="title">备注：<text>{{detail.mark}}</text></view>
+    </van-cell>
+  </block> 
+
+  <van-card
+    title="{{order_goods.goods_name}}"
+    thumb="{{order_goods.images}}"
+    desc="{{order_goods.goods_attr}}"
+    custom-class="header_card"
+    num="{{order_goods.total_num}}"
+    price="{{order_goods.goods_price}}"
+    title-class="van-multi-ellipsis--l2"
+  />
+
+  <view class='wrap show_cell'>
+    <!-- is_first_request === 0 申请通过可以显示申请的内容  -->
+    <view wx:if="{{detail.is_first_request === 0}}">
+      <!-- <van-cell  title="申请内容" border="{{false}}" title-class="title"/>  -->
+      <van-cell border="{{false}}"> 
+        <view slot="title" class='msg'>退换数量：<text class='t_d'>{{detail.exp_no}} 件</text></view>
+      </van-cell>
+      <van-cell border="{{false}}"> 
+        <view slot="title" class='msg'>
+          {{detail.show_text_explain}}：
+          <text class='t_d text_explain'>{{detail.content == '' ? '无': detail.content}}</text>
+        </view>
+      </van-cell>
+    </view>
+     
+    <block wx:if="{{detail.goods_status != ''}}">
+      <van-cell border="{{false}}"> 
+        <view slot="title" class='msg'>商品状态: <text>{{detail.goods_status}}</text></view>
+      </van-cell>
+    </block>
+    <block wx:if="{{detail.is_first_request === 0}}">
+      <van-cell border="{{false}}"> 
+        <view slot="title" class='msg'>申请时间: <text class='t_d'>{{detail.createtime}}</text></view>
+      </van-cell> 
+      <van-cell border="{{false}}" wx:if="{{detail.updatetime !== 0}}"> 
+        <view slot="title" class='msg'>修改申请时间：<text class='t_d'>{{detail.updatetime}}</text></view>
+      </van-cell> 
+    </block>
+  </view>
+
+  <form bindreset="formReset" bindsubmit="submitData" wx:if="{{detail != ''}}">
+    <view class='content'>
+      <van-cell-group>
+        <!--status 20 填写快递单号  -->
+        <view wx:if="{{detail.status == 20 && detail.is_first_request === 0 && detail.need_user_express === 1}}" class='wrap'>
+          <van-cell  title="填写快递信息" border="{{false}}" title-class="title"/> 
+          <van-field
+            label="快递公司名称"
+            required
+            placeholder="请输入快递公司名称"
+            border="{{ false }}"
+            name="receive_express_company"
+            value="{{detail.receive_express_company}}"
+          />
+          <van-field
+            label="快递单号"
+            required
+            placeholder="请输入快递单号"
+            border="{{ false }}"
+            name="receive_express_no"
+            value="{{detail.receive_express_no}}"
+          />
+          <van-field
+            label="快递费用"
+            required
+            placeholder="请输入快递费用"
+            border="{{ false }}"
+            name="receive_express_fee"
+            value="{{detail.receive_express_fee}}"
+          />
+        </view>
+
+        <!-- status为空或者是10时可以修改或者提交申请 {{detail.status == '' || detail.status == 10}}-->
+        <view wx:if="{{detail.is_first_request === 1}}" class='wrap'>
+          <van-cell  title="填写申请内容" border="{{false}}" title-class="title"/> 
+          <view class='number'>
+            <van-cell border="{{false}}"> 
+              <view slot="title">
+                退换数量：<text>{{ new_request_num }}件</text>
+              </view>
+            </van-cell>
+            <van-stepper 
+              value="{{new_request_num}}" 
+              bind:change="onChange" 
+              min="{{1}}" 
+              max="{{max_num}}"
+              integer
+            />
+          </view>
+          <van-field
+            value="{{ detail.content }}"
+            label="{{detail.show_text_explain}}："
+            type="textarea"
+            placeholder="请输入"
+            autosize
+            border="{{ false }}"
+            name="explain"
+          />
+        </view>
+
+        <!-- detail.status为空的时候是没有处理信息的 -->
+        <view wx:if="{{detail.status != ''}}" class='wrap show_cell'>
+          <van-cell  title="售后状态" border="{{false}}" title-class="title"/> 
+          <van-cell border="{{false}}"> 
+            <view slot="title" class='msg'>客服处理状态: <text class='t_d'>{{detail.kf_operate_text}}</text></view>
+          </van-cell>
+          <van-cell border="{{false}}"> 
+            <view slot="title" class='msg'>当前售后状态: <text class='t_d'>{{detail.status_text}}</text></view>
+          </van-cell>  
+        </view>
+      </van-cell-group>
+      <view class="footer-fixed" wx:if="{{detail.status == '' && detail.need_user_express === 0}}" >
+        <button formType="submit" class="order-bt" style="width:100%" disabled="{{disabled}}">
+          提交申请
+        </button>
+      </view>
+      <view class="footer-fixed" wx:if="{{detail.status == 10 && detail.need_user_express === 0}}" >
+        <button formType="submit" class="order-bt" style="width:100%" disabled="{{disabled}}">
+          修改申请
+        </button>
+      </view>
+      <view class="footer-fixed" wx:if="{{detail.status == 20 && detail.need_user_express === 1}}" >
+        <button formType="submit" class="order-bt" style="width:100%" disabled="{{disabled}}">
+            提交
+        </button>
+      </view>
+    </view>
+  </form>  
+
+  <view wx:if="{{detail.need_user_express === 0 && detail.is_first_request  === 0}}" class='wrap show_cell'>
+    <van-cell  title="快递信息" border="{{false}}" title-class="title"/> 
+    <van-cell border="{{false}}"> 
+      <view slot="title" class='msg'>快递公司名称：<text class='t_d'>{{detail.receive_express_company}} </text></view>
+    </van-cell>
+    <van-cell border="{{false}}"> 
+      <view slot="title" class='msg'>快递单号：<text class='t_d'>{{detail.receive_express_no}} </text></view>
+    </van-cell>
+      <van-cell border="{{false}}"> 
+      <view slot="title" class='msg'>快递费用：<text class='t_d'>{{detail.receive_express_fee}} </text></view>
+    </van-cell>
+  </view>
+
+</view>
+<van-toast id="van-toast"/>

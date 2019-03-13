@@ -1,0 +1,108 @@
+<view class="p-bottom">
+  <van-cell 
+    is-link
+    url="../adress/index?type=checkout"
+    custom-class="addborder"
+  >
+    <view slot="title" wx:if="{{address}}" >          
+      <van-icon custom-class='lianxirentip ico-ad' name="phone"/><text class='lianxirentip'> {{address.name}} : {{address.phone}}</text>
+      <text>\n\r</text>
+      <van-icon custom-class='ico-ad' name="logistics"/> {{address.province}}{{address.city}} - {{address.detail}}
+    </view>
+    <view slot="title" wx:else bindtap='addAdress' class='van-submit-bar__tip'>
+      <van-icon custom-class='ico-ad' name="logistics" />添加收货地址<text>\n\r</text>
+    </view>
+  </van-cell>
+  <view class="card-root-c" wx:for="{{goods_list}}" wx:key="this" wx:for-index="idx">
+     <!-- price="{{item.goods_price}}" 
+      num="{{item.total_num}}"  -->
+    <van-card 
+      custom-class="van-card-root-c" 
+      thumb-link="../goods/index?goods_id={{item.goods_id}}" 
+      title="{{item.goods_name}}"
+      desc="{{item.goods_sku.goods_attr ? item.goods_sku.goods_attr :'默认规格'}}" 
+      centered="{{false}}" 
+      lazy-load="{{true}}" 
+      title-class="card-t-c" 
+      thumb="{{item.goods_sku.spec_image==''? item.image:item.goods_sku.img_show}}"
+    >
+      <view slot="tags" class='tags'>
+        <text class='price'>￥{{item.goods_price}}</text>
+        <text class='num'> x{{item.total_num}}</text>
+      </view>
+    </van-card>
+  </view>
+
+  <!-- 这里是总计 和 邮费 -->
+  <van-cell-group custom-class="vcg-c" border="{{false}}">
+    <van-cell title="商品数总计：" value="{{order_total_num?order_total_num:'0' }}" title-class="cell-title" value-class="cell-value"/>
+    <van-cell title="商品价格总计：" value="￥{{order_total_price}}" title-class="cell-title" value-class="cell-value"/>
+    <van-cell isLink data-type="cash" bindtap="choosecoupon">
+      <view slot="title" class='cell-title'>
+        <text>使用现金券：</text>
+        <text class='coupon-desc'>{{cash_coupon_checked === '' && cash_coupon_num !== 0 ? '未选择现金券' : cash_coupon_checked.name}}</text>
+      </view>
+      <view class='cell-value'>
+          <view wx:if="{{cash_coupon_num == 0}}">暂无可用</view>
+          <view wx:elif="{{cash_coupon_checked  === '' || cash_coupon_checked.id === -1}}">
+           {{ cash_coupon_num +'张可用'}}
+          </view>
+          <view class='c_red' wx:else> - ￥{{cash_coupon_checked.discount}} </view>
+      </view>
+    </van-cell>
+    <van-cell isLink data-type="discount" bindtap="choosecoupon">
+      <view slot="title" class='cell-title'>
+        <text>使用优惠券：</text>
+        <text class='coupon-desc'>{{discount_coupon_checked === '' && discount_coupon_num !== 0 ? '未选择优惠券' : discount_coupon_checked.name}}</text>
+      </view>
+      <view class='cell-value'>
+        <view wx:if="{{discount_coupon_num == 0}}">暂无可用</view>
+        <view wx:elif="{{discount_coupon_checked  === '' || discount_coupon_checked.id === -1}}">
+          {{ discount_coupon_num +'张可用'}}
+        </view>
+        <view class='c_red' wx:else> - ￥{{discount_coupon_checked.discount}} </view>
+      </view>
+    </van-cell>
+    <van-cell title="快递费用：" value-class="pric-cell" value="{{express_price==0 ? '全国包邮' : '＋ ￥' + express_price}}" title-class="cell-title" value-class="cell-value"/>
+  </van-cell-group>
+
+</view>
+
+<van-submit-bar
+  price="{{c_order_total_price*100}}"
+  button-text="提交订单"
+  bind:submit="onClicktjButton" 
+  disabled="{{order_total_num == 0 || address_id == -1 || disabled ? true : false}}"
+>
+</van-submit-bar>
+
+<van-toast id="van-toast" />
+<van-action-sheet
+  show="{{ couponshow }}"
+  overlay="{{true}}"
+  close-on-click-overlay="{{true}}"
+  bind:close="onClose"
+  bind:select="onSelect"
+  title="{{coupon_type === 'cash' ? '选择现金券':'选择优惠券'}}"
+>
+  <van-cell-group custom-class="" border="{{false}}">
+    <van-radio-group value="{{coupon_detail_id}}" bind:change="onChange" custom-class="group-style">
+      <van-cell wx:for="{{coupon_detail}}" wx:key="item.id" border="{{false}}" wx:if="{{item.id !== -1}}"  clickable data-name="{{item.id}}" bind:click="onClick">
+        <view slot="title">
+          <view  class="van-cell-text">省 {{item.discount}} : {{item.name}} <text>￥{{item.discount}}</text></view>    
+        </view>
+        <van-radio name="{{item.id}}" slot="right-icon">
+        </van-radio>
+      </van-cell>
+      <van-cell wx:for="{{coupon_detail}}" wx:key="item.id" border="{{false}}" wx:if="{{item.id === -1}}" clickable data-name="{{item.id}}" bind:click="onClick">
+        <view slot="title">
+          <view  class="van-cell-text">{{item.name}}</view>    
+        </view>
+        <van-radio name="{{item.id}}" slot="right-icon" labelPosition='left'>
+        </van-radio>
+      </van-cell>      
+    </van-radio-group>  
+  </van-cell-group>
+
+  <view class='btn' bindtap='selectcoupon'><van-button custom-class="btn-style" round type="default" size="large">完成</van-button></view>
+</van-action-sheet>

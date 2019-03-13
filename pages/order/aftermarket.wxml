@@ -1,0 +1,43 @@
+<view class="app">
+  <van-card
+    title="{{order_goods.goods_name}}"
+    thumb="{{order_goods.images}}"
+    desc="{{order_goods.goods_attr}}"
+    custom-class="header_card"
+    num="{{order_goods.total_num}}"
+    price="{{order_goods.goods_price}}"
+  />
+
+  <van-cell-group custom-class="content_group">
+    <van-cell
+      is-link
+      custom-class="content_group_cell"
+      url="./application?type=10&id={{order_goods.id}}&orderid={{order_goods.order_id}}"
+    >
+      <view slot="title">    
+        <view><van-icon custom-class='ico-ad' name="tuikuan" color='#ec6f41' size="1.5em"/>仅退款</view>
+        <text class='desc'>未收到货</text>
+      </view>
+    </van-cell>
+    <van-cell
+      is-link
+      custom-class="content_group_cell"
+      url="./application?type=20&id={{order_goods.id}}&orderid={{order_goods.order_id}}"
+    >
+      <view slot="title">    
+        <view><van-icon custom-class='ico-ad' name="huodaotuikuan" color='#ec6f41' size="1.5em"/>货到退款</view>
+        <text class='desc'>货到退款</text>
+      </view>
+    </van-cell>
+    <van-cell
+      is-link
+      custom-class="content_group_cell"
+      url="./application?type=30&id={{order_goods.id}}&orderid={{order_goods.order_id}}"
+    >
+      <view slot="title">    
+        <view><van-icon custom-class='ico-ad' name="huanhuo" color='#ec6f41' size="1.5em"/>换货</view>
+        <text class='desc'>未收到货</text>
+      </view>
+    </van-cell>
+  </van-cell-group>
+</view>

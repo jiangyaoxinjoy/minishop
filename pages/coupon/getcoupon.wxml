@@ -1,0 +1,24 @@
+<view class="wrapper {{cou.ifget? 'error' : ''}}" wx:for="{{ coupon}}" wx:key="{{cou.coupon_id}}" wx:for-item="cou" bindtap='getCoupon' data-id="{{cou.id}}" data-item="{{index}}">
+  <view class='sawtooth'>
+    <view class='top'>
+      <view class='discount'>
+      ￥<text >{{cou.discount}}</text>
+      </view>
+      <view class='name'>
+        <text>优惠券</text>
+        <text>{{cou.name}}</text>
+      </view>
+    </view>
+    <view class='msg'>
+      <text wx:for="{{cou.coupontext}}" wx:key="index">{{item}}</text>
+    </view>
+  </view>
+  <view class='desc'>
+    <view class='bottom'>
+      <!-- <text wx:for="{{cou.coupontext}}" wx:key="index">{{item}}</text>
+      <text>领券中心</text> -->
+      <text>使用时间截止到： {{cou.time}}</text>
+      <text>全场通用</text>
+    </view>
+  </view>
+</view>

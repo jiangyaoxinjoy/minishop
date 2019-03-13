@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "使用红包",
+  "usingComponents": {
+    "van-card": "/res/vant/card/index",
+    "van-stepper": "/res/vant/stepper/index",
+    "van-swipe-cell": "/res/vant/swipe-cell/index",
+    "van-cell": "/res/vant/cell/index",
+    "van-cell-group": "/res/vant/cell-group/index",
+    "van-submit-bar": "/res/vant/submit-bar/index",
+    "van-radio-group": "/res/vant/radio-group/index",
+    "van-radio": "/res/vant/radio/index"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "增加新地址",
+  "usingComponents": {
+    "van-cell": "/res/vant/cell/index",
+    "van-cell-group": "/res/vant/cell-group/index",
+    "van-field": "/res/vant/field/index",
+    "van-button": "/res/vant/button/index",
+    "van-toast": "/res/vant/toast/index",
+    "van-checkbox": "/res/vant/checkbox/index",
+    "van-checkbox-group": "/res/vant/checkbox-group/index"
+  }
+}

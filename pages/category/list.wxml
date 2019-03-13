@@ -1,0 +1,45 @@
+<van-tabbar active="{{ active }}" fixed="{{false}}" bind:change="onChange">
+  <van-tabbar-item>综合</van-tabbar-item>
+  <van-tabbar-item>最新</van-tabbar-item>
+  <van-tabbar-item bind:click="resetprice">
+    价格
+    <view class='price-icon {{down==true?"":"xz180"}}'><van-icon name="arrow" color="#ccc" size="1em" /></view>
+  </van-tabbar-item>
+  <van-tabbar-item>销量</van-tabbar-item>
+</van-tabbar>
+
+<scroll-view wx:if="{{!noList}}" bindscrolltolower="bindgetdata" scroll-y="true" style="height: {{scrollHeight}}px; width: 100%;" >
+  <!-- <van-transition name="fade-up" > -->
+  <view class="index_sale">
+      <view class="free-WaterfallFlow">
+        <block>
+          <view class="flex-wrap {{idx%2 === 0 ? 'odd': 'even'}}" wx:for="{{list}}" wx:for-item="item" wx:for-index="idx" wx:key="ccit">
+            <view class='mar-20'>
+              <navigator hover-class="none" url="../goods/index?goods_id={{item.id}}">
+                <view class="page-column">
+                  <view class='padding-b'>
+                    <image class='list-image' mode="scaleToFill" src="{{item.image}}"></image>
+                  </view>
+                  <view class="goods-name">
+                    <text>{{item.goods_name}}</text>
+                  </view>
+                  <view class='goods-msg'>
+                    <text class="price"><text class='price-sign'>￥</text>{{item.goods_min_price}}</text>
+                    <text class='sales'>已售{{item.goods_sales}}件</text>
+                  </view>
+                </view>
+              </navigator>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- </van-transition> -->
+</scroll-view>
+
+<view wx:if="{{noList}}" class="liteshop-notcont" style="margin-top:130px;">
+    <view class="img">
+      <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+    </view>
+    <text class="cont">没有相关商品</text>
+  </view>

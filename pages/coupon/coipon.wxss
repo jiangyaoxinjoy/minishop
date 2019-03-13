@@ -1,0 +1,41 @@
+/* pages/coupon/coipon.wxss */
+.coupon{
+  width: 94%;
+  margin: auto;
+}
+.top{
+  width: 100%;
+  background: #eee;
+  height: 80px;
+  position: relative;
+  /* display: inline-block; */
+}
+.top:before, .top:after {
+    content: ' ';
+    /* width: 0;
+    height: 100%; */
+     width: 100%;
+    height: 0;
+    /* 绝对定位进行偏移 */
+    position: absolute;
+    /* top: 0; */
+    bottom: -10px;
+}
+
+.top:before {
+    /* 圆点型的border */
+    border-right: 10px dotted white;
+    /* 偏移一个半径，让圆点的一半覆盖div */
+    bottom: -5px;
+}
+
+.top:after {
+    /* 圆点型的border */
+    border-bottom: 10px dotted white;
+    /* 偏移一个半径，让圆点的一半覆盖div */
+    bottom: -5px;
+}
+.sub{
+  height: 80px;
+  background: #fff;
+}

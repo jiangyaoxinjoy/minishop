@@ -1,0 +1,130 @@
+.p-bottom{
+  padding-bottom:110px;
+}
+
+.tagadress{
+  margin-left: 1em;
+}
+.error_goods{
+  background-color:#fff;filter:Alpha(Opacity=30);opacity:0.3;
+}
+.lianxirentip{
+  color: #6d189e;
+}
+.ico-ad{
+  font-size: 12px!important;
+  margin-right:0.68em;
+}
+.card-t-c{
+  font-size: 1.4em;
+}
+.card-p-c{
+  font-size: 1.3em;
+  color: red;
+  font-weight: bolder;
+}
+.card-op-c{
+  font-size: 1.1em;
+  text-decoration:none!important;
+  margin-top:0.28em;
+}
+.van-card-root-c{
+  box-shadow: 0 1px 2px #dfb3f8;
+  background-color:white!important;
+}
+.no-more{
+  margin:1em auto;
+  text-align:center;
+  color: #6d189e;
+}
+.pric-cell{
+  color:#f44;
+}
+.vcg-c{
+  /* padding-top: 10px; */
+}
+
+
+.p-bottom .header_card,.card_wrap{
+  background: #fff;
+}
+.p-bottom .van-button{
+  height: 28px;
+  line-height: 26px;
+  padding:0 20px;
+}
+.card_wrap{
+  padding: 10px 0;
+}
+.card_f{
+  margin: 0 15px 10px 0;
+  text-align: right;
+}
+.footer-fixed {
+  position: fixed;
+  display: flex;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 46px;
+  z-index: 18;
+  box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
+  background: #fff;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+.footer-fixed .van-button{
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+}
+.order_detail{
+  margin-top: 10px;
+}
+.order_d_t{
+  position: relative;
+  font-size: 1.1em;
+  color: #393939;
+  font-weight: bold;
+  /* padding-left: 0px; */
+  margin: 8px 0;
+}
+.order_d_t::before{
+  content: '';
+  display: block;
+  position: absolute;
+  height: 70%;
+  width: 2px;
+  background: #ef532a;
+  left: -7px;
+  top: 15%;
+}
+.p-bottom .van-cell{
+  padding: 5px 15px;
+}
+.order_detail .van-cell{
+  padding-left: 18px;
+}
+.p-bottom .price{
+  color: #ef532a;
+}
+.order_detail .copy{
+  color: #ef532a;
+}
+.order_detail .van-cell__title {
+  -webkit-flex:auto;
+  flex:auto;
+}
+.card_wrap .card_title{
+  color: #323232;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+.vsp-c text{
+  display: block;
+  padding-left: 20px;
+}
+.vsp-c{
+  margin-bottom: 10px;
+  /* margin-top: 10px; */
+}

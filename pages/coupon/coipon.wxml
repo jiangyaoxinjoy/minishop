@@ -1,0 +1,5 @@
+<!--pages/coupon/coipon.wxml-->
+<view class='coupon'>
+  <view class='top'></view>
+  <view class='sub'></view>
+</view>

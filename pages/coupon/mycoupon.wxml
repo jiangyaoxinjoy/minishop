@@ -1,0 +1,81 @@
+<van-tabs active="{{ active }}" custom-class="tab-margin" color="#ff5105" bind:change="onChange">
+  <van-tab title="未使用">
+    <block wx:if="{{unused.length !== 0}}" >
+      <view class='wrapper' wx:for="{{unused}}" wx:key="{{item.coupon_id}}">
+        <view class='sawtooth'>
+          <view class='left'>
+            <view class='discount'>
+            ￥<text >{{item.discount}}</text>
+          </view>
+          <view class='name'>{{item.name}}</view>
+          </view>
+        </view>
+        <view class='desc'>
+          <view class='right'>
+            <text>领券中心</text>
+            <text>使用时间截止到： {{item.time}}</text>
+            <text>全场通用</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="liteshop-notcont">
+      <view class="img">
+        <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="已使用">
+     <block wx:if="{{used.length!== 0}}">
+      <view class='wrapper err' wx:for="{{used}}" wx:key="{{item.coupon_id}}">
+        <view class='sawtooth'>
+          <view class='left'>
+            <view class='discount'>
+            ￥<text >{{item.discount}}</text>
+          </view>
+          <view class='name'>{{item.name}}</view>
+          </view>
+        </view>
+        <view class='desc'>
+          <view class='right'>
+            <text>领券中心</text>
+            <text>使用时间截止到： {{item.time}}</text>
+            <text>全场通用</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="liteshop-notcont">
+      <view class="img">
+        <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+      </view>
+    </view>
+  </van-tab>
+
+  <van-tab title="已过期">
+    <block wx:if="{{expired.length!== 0}}">
+      <view class='wrapper err' wx:for="{{expired}}" wx:key="{{item.coupon_id}}">
+        <view class='sawtooth'>
+          <view class='left'>
+            <view class='discount'>
+            ￥<text >{{item.discount}}</text>
+          </view>
+          <view class='name'>{{item.name}}</view>
+          </view>
+        </view>
+        <view class='desc'>
+          <view class='right'>
+            <text>领券中心</text>
+            <text>使用时间截止到： {{item.time}}</text>
+            <text>全场通用</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="liteshop-notcont">
+      <view class="img">
+        <image mode="aspectFit" src="../../res/imgs/no-data.png"></image>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>

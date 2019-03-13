@@ -1,0 +1,95 @@
+.tagadress{
+  margin-left: 1em;
+}
+.ico-ad{
+  font-size: 12px!important;
+  margin-right:0.68em;
+  display: block;
+}
+.card-t-c{
+  font-size: 1.2em;
+  margin-bottom: 3px;
+}
+.error_goods .card-p-c{
+  color: #999;
+}
+.card-p-c{
+  font-size: 1.1em;
+}
+.card-op-c{
+  font-size: 1.1em;
+  text-decoration:none!important;
+  margin-top:0.28em;
+}
+.van-card-root-c{
+  background-color:white!important;
+  margin-bottom: 2px;
+}
+.p-bottom{
+  padding-bottom:110px;
+}
+.vcg-c{
+  padding-top: 10px;
+  padding: 0 10px;
+  background: #fff;
+  /* margin-top: 10px; */
+}
+.card-root-c{
+  position: relative;
+  /* border-bottom: 3px solid #fff; */
+}
+.p-bottom .addborder{
+  margin: 15rpx auto;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+.btn{
+  width: 80%;
+  margin: 20rpx auto;
+}
+.btn .btn-style{
+  background:  #ff7003;
+  color: #fff;
+}
+.group-style{
+  margin: 30rpx 0;
+  border: none;
+}
+.coupon-desc{
+  font-size: 0.82em;
+  color:#666;
+}
+.radio-wrap{
+  width: 100%;
+}
+.p-bottom .cell-title{
+  color: #2a2a2a;
+}
+.p-bottom .van-cell__value{
+  color: #191919;
+  -webkit-flex:0 0 auto;
+  flex: 0 0 auto;
+}
+.van-card__content{
+  position: relative;
+}
+.tags{
+  position: absolute;
+  bottom: 5px;
+  font-size: 1.1em;
+  width: 100%;
+}
+.tags .price,.c_red{
+  color: red;
+}
+.num{
+  float: right;
+}
+.van-submit-bar__tip {
+padding:10px;
+color:#f56723;
+font-size:12px;
+line-height:18px;
+background-color:#fff7cc;
+
+}

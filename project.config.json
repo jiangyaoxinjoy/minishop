@@ -1,0 +1,186 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
+	"appid": "wxccddfe48b47420a3",
+	"projectname": "minishop",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "商品浏览",
+					"pathName": "pages/goods/index",
+					"query": "goods_id=24",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新闻",
+					"pathName": "pages/news/index",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "分类查找首页",
+					"pathName": "pages/category/index",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "分类查找列表",
+					"pathName": "pages/category/list",
+					"query": "cid=4&name=电子产品",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/index",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "订单确认",
+					"pathName": "pages/cart/checout",
+					"query": "type=cart"
+				},
+				{
+					"id": 6,
+					"name": "地址管理",
+					"pathName": "pages/adress/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "增加地址",
+					"pathName": "pages/adress/create",
+					"query": "id=16",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/order/index",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "订单详情",
+					"pathName": "pages/order/detail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/index",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "首页ffid",
+					"pathName": "pages/index/index",
+					"query": "affid=2",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "红包",
+					"pathName": "pages/coupon/coipon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的卡券",
+					"pathName": "pages/coupon/mycoupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "卡券中心",
+					"pathName": "pages/coupon/getcoupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/order/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "售后",
+					"pathName": "pages/order/aftermarket",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "申请",
+					"pathName": "pages/order/application",
+					"query": "type=10&id=1&orderid=1",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "立即购买",
+					"pathName": "pages/cart/checout",
+					"query": "type=buyNow&goods_num=2&goods_sku_id=44_47&goods_id=22",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "搜索",
+					"pathName": "pages/category/list",
+					"query": "rename=1&name=M",
+					"scene": null
+				},
+				{
+					"id": 20,
+					"name": "二维码商品详情",
+					"pathName": "pages/goods/index",
+					"query": "scene=22#41",
+					"scene": 1048
+				}
+			]
+		}
+	}
+}

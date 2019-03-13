@@ -1,0 +1,221 @@
+<import src="../../res/wxParse/wxParse.wxml"></import>
+
+<view class='app'>
+  <view class="diy-banner">
+    <swiper 
+      autoplay="{{autoplay}}" 
+      class="banner-box swiper-box dot-round" 
+      current="current_img_index" 
+      duration="{{duration}}" 
+      circular="{{true}}" 
+      indicator-dots="{{indicatorDots}}" 
+      interval="{{interval}}" 
+    >
+      <!-- wx:for等价与wx:for-items是循环数组用的；而wx:for-item则是给列表赋别名用的 -->
+      <!-- imgs是item的别名 -->
+      <view hover-class="none" wx:for-item="imgs" wx:for="{{detail.imgs_url}}" wx:key="this">
+        <swiper-item item-id="{{index}}" bindtap="Tap_topimg">
+          <image class="slide-image" mode="aspectFill" src="{{imgs}}" data-id="{{index}}"></image>
+        </swiper-item>
+      </view>
+    </swiper>
+  </view>
+
+
+  <van-cell-group border="{{false}}">
+    <van-cell 
+      title="{{detail.goods_name}}" 
+      border="{{ false }}" 
+      custom-style="font-size:1em;font-weight: bold;"
+      title-class="goods_title"
+      value-class="goods_title_value"
+      custom-class="vancell_wrap"
+    >
+      <view bindtap='share' class='share_icon'>
+        <van-icon name="share" color="#888888" size="1.2em" custom-style=""/>
+        分享
+      </view>
+    </van-cell>
+    <van-cell>
+      <view slot="title">
+        <!-- <text class="titlec" >特惠价：</text> -->
+        <text class="titlec">￥<text class='title_price'>{{goods_price}}</text></text>
+        <!-- <van-tag mark size="large" type="danger">￥{{goods_price}}</van-tag> -->
+        <view  class="title_p" >
+          <text wx:if="{{line_price!=0.00}}" class='yuanjia'>原价：￥{{line_price}}</text>
+          <!-- <text>销量:{{detail.sales_actual > detail.sales_initial ?  detail.sales_actual:detail.sales_initial }}</text> -->
+        </view>
+      </view>
+      <view class='sales'>
+        <text>销量:{{detail.sales_actual > detail.sales_initial ?  detail.sales_actual:detail.sales_initial }}</text>
+      </view>
+    </van-cell>
+  </van-cell-group>
+
+  <view class="modal_cont_box">
+    <van-cell border="{{ false }}" is-link bind:click="openFold">
+      <view slot="title">
+        <text>选择</text><text class='tinge'>规格</text>
+      </view>
+    </van-cell>
+  </view>
+
+  <view class="modal_cont_box end_box">
+    <view class="til_conview">
+      <view class='in-title'>
+        <van-icon name="description" color="#000" size="1.2em"/>
+        <text class="til_con"> 商品详情 </text>
+      </view>
+    </view>
+    <view class="order">
+          <view wx:if="{{detail.content!=''}}">
+            <view class="goods-detail-box">
+              <view class="goods-cont-li">
+                <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="liteshop-notcont">
+              <text class="cont">此商品暂无商品详情</text>
+            </view>
+          </view>
+      </view>
+      <!-- include可以将目标文件除了<template/>的整个代码引入，相当于是拷贝到include位置 -->
+      <include src="../foot_right.wxml"/>
+  </view>
+</view>
+
+<van-goods-action custom-class="goods-action">
+<!-- <contact-button 
+  type="default-light" 
+  size="50"
+  session-from="weapp"
+>
+</contact-button> -->
+  <van-goods-action-icon open-type="contact" icon="chat" text="客服" />
+  <van-goods-action-icon icon="cart" text="购物车" info="{{cartnum==0?'':cartnum}}" link-type="switchTab" url="../cart/index"/>
+  <van-goods-action-icon icon="shop" link-type="switchTab" url="../index/index" text="店铺" />
+  <block wx-if="{{detail.goods_stauts  !== '20'}}">
+    <van-goods-action-button loading="{{addcart_loading}}" text="加入购物车" type="warning" bind:click="addcart"/>
+    <van-goods-action-button text="立即购买" bind:click="ByNow"/>
+  </block>
+  <block  wx:else> 
+    <van-goods-action-button text="此商品已售完" type="warning" disabled custom-class="sellout"/>
+  </block>
+</van-goods-action>
+
+<van-toast id="van-toast" />
+<!-- confirmButtonText="点击登录" confirmButtonOpenType="getUserInfo" bind:getuserinfo="onGotUserInfo" -->
+<van-dialog show="{{doLogin}}" title="请先授权登录" useSlot bind:close="closeDialog" closeOnClickOverlay>
+  <view name='btn' class="getUserInfoBtn">
+    <van-button type="primary" size="large"  wx:if="{{!userInfo.isLogin}}" open-type="getUserInfo" bind:getuserinfo="onGotUserInfo" custom-class="getUserInfo">点击授权</van-button>
+  </view>
+</van-dialog>
+
+<!-- 分享弹框 -->
+<van-popup 
+  show="{{ share_pop }}" 
+  position="bottom"
+  overlay="{{ true }}"
+  safe-area-inset-bottom="{{true}}"
+  close-on-click-overlay="{{ true }}"
+  bind:click-overlay="closesharepop"
+  custom-style="height:auto;z-index:101"
+  custom-class="sharepop"
+>
+  <view class="sharimg {{canvasShow?'':'hidden'}}" >
+    <image mode='widthFix'src="{{canvasUrl}}"></image>
+    <van-icon name="close" color="#a2a2a2" size="1.1em" custom-class="share_close_icon" bind:click="closesharepop"/>
+    <view class='download_icon' bindtap='downloadcode'><van-icon name="download"  color="#828282" size="1em" custom-class=""></van-icon>下载图片</view>
+  </view>
+  <van-panel use-footer-slot >
+    <view class='share_content'>
+      <view class='share_icon_wrap' bindtap="shareframeshow">
+        <button hover-class="none" class='con_listbox' open-type="share"><van-icon name="wechat" color="#04d611" size="2.5em" custom-class="share_icon"/></button>
+        <van-tag round color="#fff" custom-class="share_tag">微信</van-tag>
+      </view>
+      <view class='share_icon_wrap' bindtap="saveimgshow">
+        <van-icon name="copy" color="#000" size="2.5em" custom-class="share_icon" />
+        <van-tag round custom-class="share_tag" color="#fff">保存图片</van-tag>
+      </view>
+    </view>
+    <view slot="footer">
+      <van-button size="large" custom-class="closeBtn" bindtap='closesharepop'>取消</van-button>
+    </view>
+  </van-panel>
+  
+</van-popup>
+
+<!-- 生成图片 -->
+<canvas canvas-id="mycanvas" class='canvas' id="mycanvas"/>
+
+<!-- 选择商品规格弹框 -->
+<!-- bottom: 50px; -->
+<van-popup
+  show="{{ panelShow }}"
+  position="bottom"
+  overlay="{{ true }}"
+  safe-area-inset-bottom="{{true}}"
+  bind:close="onClose"
+  custom-style="height:auto"
+  close-on-click-overlay="{{ true }}"
+  bind:click-overlay="closepop"
+  z-index="101"
+>
+  <van-panel custom-class="panel">
+    <view slot="header" class='sepcHeader'>
+      <view>
+        <image mode="scaleToFill" src="{{goods_image}}" class='specImage' data-src="{{goods_image}}" bindtap='imgYu'></image>
+      </view>
+      <view class='specDesc'>
+        <text class='specPrice'>￥{{goods_price}}</text>
+        <text>库存：{{stock_num}}</text>
+      </view>
+      <van-icon name="close" color="#a2a2a2" size="1.4em" custom-class="close_icon" bind:click="closePanel"/>
+    </view>
+    <view class='panel-content'>
+      <view class="tmall-types" wx:for="{{spec_data.spec_attr}}" wx:for-item="attr" wx:for-index="attr_idx" wx:key="key">
+        <view class="tipstxt">{{attr.group_name}}：</view> 
+        <van-radio-group 
+          custom-class="radio_group" 
+          value="{{goods_spec_arr[attr_idx]}}" 
+          data-id="{{attr.group_id}}" 
+          data-attr_idx="{{attr_idx}}" 
+          bind:change="RonChange"
+        >
+          <van-radio wx:for="{{attr.spec_items}}" 
+            disabled="{{item.hidden}}"
+            custom-class="radio_cc radio_goods" 
+            icon-class="radio_cc none {{item.hidden ? 'hidden-cl' : 'radio_i' }}" 
+            label-class="radio_lable {{item.hidden ? 'hidden-cl' : '' }}" 
+            wx:for-index="item_idx" 
+            wx:key="ikey" 
+            name="{{item.item_id}}"
+            goods="goods"
+          >{{item.spec_value}}</van-radio>
+        </van-radio-group>
+      </view>
+      <view class="tmall-types last">
+        <van-cell title="购买数量：" border="{{false}}" custom-class="specNum">
+          <van-stepper 
+            disable-input 
+            custom-class="van-stepper-c" 
+            value="{{ goods_num }}" 
+            integer  
+            min="1" 
+            max="{{stock_num}}" 
+            bind:change="onstepChange" 
+            bind:plus="onPlus"
+            plus-class="stepbtn"
+            minus-class="stepbtn"
+          />
+        </van-cell> 
+      </view>
+    </view>
+    <view class='panel_footer'>
+      <view class='adbtn' wx:if="{{attr_show_from == 2 || attr_show_from == 1}}"><van-button custom-class="{{attr_show_from == 1 ? 'tint':'dark'}}" size="large" bind:click="goAddcart" >加入购物车</van-button></view>
+      <view class='adbtn' wx:if="{{attr_show_from == 3 || attr_show_from == 1}}"><van-button bind:click="goByNow"  custom-class="dark" size="large">立即购买</van-button></view>
+    </view>
+  </van-panel>
+</van-popup>
